@@ -1,3 +1,7 @@
+// Endpoint API
+const authcode = 'fqyXqh2E47G04fm10NBDChQqURBYD965';
+export const URL_API = `https://app.xrun.run/gateway.php?authcode=${authcode}`;
+
 // * Funtion TransactionalInformation
 export const funcTransactionalInformation = async (
   member,
@@ -22,7 +26,7 @@ const totalHistory = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-05&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-05&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -72,7 +76,7 @@ const transferHistory = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-06&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-06&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -122,7 +126,7 @@ const receivedDetails = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-01&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-01&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -172,7 +176,7 @@ const transitionHistory = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-03&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-03&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -209,4 +213,16 @@ const transitionHistory = async (
   };
 
   fetchData();
+};
+
+// Get List coin or Cointrace
+export const coinTrace = async (setCointrace, Alert) => {
+  try {
+    const response = await fetch(`${URL_API}&act=ap4300-cointrace`);
+    const result = await response.json();
+    setCointrace(result.data);
+  } catch (err) {
+    Alert.alert('Error get data cointrace: ', err);
+    console.log('Error get data cointrace: ', err);
+  }
 };
