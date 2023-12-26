@@ -31,13 +31,6 @@
         android:value="ca-app-pub-9457909979646034~5020701276"
       />
 
-      <!-- RN AR Viewer -->
-      <meta-data 
-        android:name="com.google.ar.core" 
-        android:value="required" 
-        tools:replace="android:value" 
-      />
-
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
