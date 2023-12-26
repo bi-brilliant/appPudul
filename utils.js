@@ -218,9 +218,7 @@ const transitionHistory = async (
 // Get List coin or Cointrace
 export const coinTrace = async (setCointrace, Alert) => {
   try {
-    const response = await fetch(
-      'https://app.xrun.run/gateway.php?act=ap4300-cointrace',
-    );
+    const response = await fetch(`${URL_API}&act=ap4300-cointrace`);
     const result = await response.json();
     setCointrace(result.data);
   } catch (err) {
