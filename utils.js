@@ -26,7 +26,7 @@ const totalHistory = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-05&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-05&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -76,7 +76,7 @@ const transferHistory = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-06&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-06&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -126,7 +126,7 @@ const receivedDetails = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-01&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-01&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
@@ -176,7 +176,7 @@ const transitionHistory = async (
     try {
       const requests = currencies.map(currency =>
         fetch(
-          `https://app.xrun.run/gateway.php?act=app4200-03&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
+          `${URL_API}&act=app4200-03&startwith=0&member=${member}&currency=${currency}&daysbefore=30`,
           {
             method: 'POST',
           },
