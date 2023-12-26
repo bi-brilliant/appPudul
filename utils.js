@@ -1,3 +1,7 @@
+// Endpoint API
+const authcode = 'fqyXqh2E47G04fm10NBDChQqURBYD965';
+export const URL_API = `https://app.xrun.run/gateway.php?authcode=${authcode}`;
+
 // * Funtion TransactionalInformation
 export const funcTransactionalInformation = async (
   member,
@@ -209,4 +213,18 @@ const transitionHistory = async (
   };
 
   fetchData();
+};
+
+// Get List coin or Cointrace
+export const coinTrace = async (setCointrace, Alert) => {
+  try {
+    const response = await fetch(
+      'https://app.xrun.run/gateway.php?act=ap4300-cointrace',
+    );
+    const result = await response.json();
+    setCointrace(result.data);
+  } catch (err) {
+    Alert.alert('Error get data cointrace: ', err);
+    console.log('Error get data cointrace: ', err);
+  }
 };
