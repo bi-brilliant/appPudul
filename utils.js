@@ -42,7 +42,7 @@ const totalHistory = async (
         (acc, result) => [...acc, ...result.data],
         [],
       );
-
+      console.log('API Total History');
       setTransactionalInformation(prevData => ({
         ...prevData,
         totalHistory: newData,
@@ -87,6 +87,7 @@ const transferHistory = async (
       const results = await Promise.all(
         responses.map(response => response.json()),
       );
+      console.log('API Transfer History');
 
       const newData = results.reduce(
         (acc, result) => [...acc, ...result.data],
@@ -137,6 +138,7 @@ const receivedDetails = async (
       const results = await Promise.all(
         responses.map(response => response.json()),
       );
+      console.log('API Received Details');
 
       const newData = results.reduce(
         (acc, result) => [...acc, ...result.data],
@@ -183,6 +185,8 @@ const transitionHistory = async (
         ),
       );
 
+      console.log('API Transition History');
+
       const responses = await Promise.all(requests);
       const results = await Promise.all(
         responses.map(response => response.json()),
@@ -213,16 +217,4 @@ const transitionHistory = async (
   };
 
   fetchData();
-};
-
-// Get List coin or Cointrace
-export const coinTrace = async (setCointrace, Alert) => {
-  try {
-    const response = await fetch(`${URL_API}&act=ap4300-cointrace`);
-    const result = await response.json();
-    setCointrace(result.data);
-  } catch (err) {
-    Alert.alert('Error get data cointrace: ', err);
-    console.log('Error get data cointrace: ', err);
-  }
 };
