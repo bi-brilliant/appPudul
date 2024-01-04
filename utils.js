@@ -42,10 +42,23 @@ const totalHistory = async (
         (acc, result) => [...acc, ...result.data],
         [],
       );
+
+      const totalHistory = newData.map(
+        ({action, currency, datetime, time, symbol, extracode, amount}) => ({
+          action,
+          currency,
+          datetime,
+          time,
+          symbol,
+          extracode,
+          amount,
+        }),
+      );
+
       console.log('API Total History');
       setTransactionalInformation(prevData => ({
         ...prevData,
-        totalHistory: newData,
+        totalHistory,
       }));
     } catch (error) {
       Alert.alert(
@@ -94,9 +107,21 @@ const transferHistory = async (
         [],
       );
 
+      const transferHistory = newData.map(
+        ({action, currency, datetime, time, symbol, extracode, amount}) => ({
+          action,
+          currency,
+          datetime,
+          time,
+          symbol,
+          extracode,
+          amount,
+        }),
+      );
+
       setTransactionalInformation(prevData => ({
         ...prevData,
-        transferHistory: newData,
+        transferHistory,
       }));
     } catch (error) {
       Alert.alert(
@@ -145,9 +170,21 @@ const receivedDetails = async (
         [],
       );
 
+      const receivedDetails = newData.map(
+        ({action, currency, datetime, time, symbol, extracode, amount}) => ({
+          action,
+          currency,
+          datetime,
+          time,
+          symbol,
+          extracode,
+          amount,
+        }),
+      );
+
       setTransactionalInformation(prevData => ({
         ...prevData,
-        receivedDetails: newData,
+        receivedDetails,
       }));
     } catch (error) {
       Alert.alert(
@@ -197,9 +234,21 @@ const transitionHistory = async (
         [],
       );
 
+      const transitionHistory = newData.map(
+        ({action, currency, datetime, time, symbol, extracode, amount}) => ({
+          action,
+          currency,
+          datetime,
+          time,
+          symbol,
+          extracode,
+          amount,
+        }),
+      );
+
       setTransactionalInformation(prevData => ({
         ...prevData,
-        transitionHistory: newData,
+        transitionHistory,
       }));
     } catch (error) {
       Alert.alert(
