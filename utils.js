@@ -86,3 +86,34 @@ export const funcTransitionHistory = async (
     daysbefore,
   );
 };
+
+// Get Language
+export const getLanguage = async (lang, screenName) => {
+  try {
+    let langData;
+
+    switch (lang) {
+      case 'id':
+        langData = require('./languages/id.json');
+        break;
+      case 'en':
+        langData = require('./languages/en.json');
+        break;
+      case 'ko':
+        langData = require('./languages/ko.json');
+        break;
+      case 'zh':
+        langData = require('./languages/zh.json');
+        break;
+      default:
+        langData = require('./languages/en.json');
+        break;
+    }
+
+    const screenLangData = langData ? langData[screenName] : null;
+    return screenLangData;
+  } catch (err) {
+    console.error('Error retrieving Get Language from AsyncStorage: ', err);
+    return null;
+  }
+};
