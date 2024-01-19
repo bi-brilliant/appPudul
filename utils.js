@@ -117,3 +117,32 @@ export const getLanguage = async (lang, screenName) => {
     return null;
   }
 };
+
+export const getLanguage2 = async lang => {
+  try {
+    let langData;
+
+    switch (lang) {
+      case 'id':
+        langData = require('./languages/id.json');
+        break;
+      case 'en':
+        langData = require('./languages/en.json');
+        break;
+      case 'ko':
+        langData = require('./languages/ko.json');
+        break;
+      case 'zh':
+        langData = require('./languages/zh.json');
+        break;
+      default:
+        langData = require('./languages/en.json');
+        break;
+    }
+
+    return langData;
+  } catch (err) {
+    console.error('Error retrieving Get Language from AsyncStorage: ', err);
+    return null;
+  }
+};
