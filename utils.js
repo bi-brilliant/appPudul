@@ -1,4 +1,5 @@
 import {Alert} from 'react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 // Endpoint API
 const authcode = 'fqyXqh2E47G04fm10NBDChQqURBYD965';
@@ -20,6 +21,8 @@ const funcTransaction = async (
   } catch (err) {
     console.log(`Failed get ${nameTransaction}: ${err}`);
     Alert.alert('', `Failed get ${nameTransaction}: ${err}`);
+    crashlytics().recordError(new Error(err));
+    crashlytics().log(err);
   }
 };
 
@@ -143,6 +146,8 @@ export const getLanguage2 = async lang => {
     return langData;
   } catch (err) {
     console.error('Error retrieving Get Language from AsyncStorage: ', err);
+    crashlytics().recordError(new Error(err));
+    crashlytics().log(err);
     return null;
   }
 };
