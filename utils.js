@@ -1,5 +1,6 @@
 import {Alert} from 'react-native';
 import crashlytics from '@react-native-firebase/crashlytics';
+import messaging from '@react-native-firebase/messaging';
 
 // Endpoint API
 const authcode = 'fqyXqh2E47G04fm10NBDChQqURBYD965';
@@ -149,5 +150,14 @@ export const getLanguage2 = async lang => {
     crashlytics().recordError(new Error(err));
     crashlytics().log(err);
     return null;
+  }
+};
+
+export const getFCMToken = async callback => {
+  const fcmToken = await messaging().getToken();
+  if (fcmToken) {
+    callback(fcmToken);
+  } else {
+    console.log('Failed', 'No token received');
   }
 };
